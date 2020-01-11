@@ -9,10 +9,17 @@ const person = {
   name: 'Tom'
 }
 
+// Even though objects are reference types in JS. Spread operator helps us in creating copies of data rather just referencing to the same data.
 const secondPerson = {
   ...person,
-  Age: 45
+  age: 45
 }
+
+// Object Destructuring
+// Taking our a property from an object/array
+const {age} = secondPerson;
+// In case of array destructuring we would have used [] brackets
+const [a] = ["Hello", "hi"]
 
 function App() {  
   return (
@@ -28,10 +35,11 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React - 
-          {secondPerson.name}
+          Learn React - Scroll Down
         </a>
       </header>
+      <p>Spread Operator: {secondPerson.name}</p>
+      <p>Object Destructuring: {age}, {a}</p>
     </div>
   );
 }
