@@ -2,7 +2,19 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
+// Spread operator
+// Same can be used with arrays
+
+const person = {
+  name: 'Tom'
+}
+
+const secondPerson = {
+  ...person,
+  Age: 45
+}
+
+function App() {  
   return (
     <div className="App">
       <header className="App-header">
@@ -16,7 +28,8 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          Learn React - 
+          {secondPerson.name}
         </a>
       </header>
     </div>
