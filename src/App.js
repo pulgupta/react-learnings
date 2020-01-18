@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import MyComponent from "./MyComponent/MyComponent";
 
 // Spread operator
 // Same can be used with arrays
@@ -25,6 +26,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+          <MyComponent name="John"><div>This is a child prop</div></MyComponent>
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
