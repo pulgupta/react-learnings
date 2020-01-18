@@ -10,7 +10,7 @@ const MyFuncComponent = props => {
 
   const myEventHandler = () => {
     setState({
-      isClicked: !compState.isClicked,
+      isClicked: !compState.isClicked
     });
   };
 
@@ -18,9 +18,16 @@ const MyFuncComponent = props => {
     <>
       <button onClick={myEventHandler}>Press Button(func)</button>{" "}
       {compState.isClicked && (
-          // Will not see the value of isPutProof as in case of functional components it is not a patch but a put.
+        // Will not see the value of isPutProof as in case of functional components it is not a patch but a put.
         <div>Hello from functional component {compState.isPutProof}</div>
       )}
+      {
+        //This is the way of passing parameters to your methods. In this case as well we are not calling the methid.
+        // We are creating an annonamous method and passing the reference to that annonamous methood
+      }
+      <button onClick={() => props.click("Tom")}>
+        Execute parent method(func)
+      </button>
     </>
   );
 };

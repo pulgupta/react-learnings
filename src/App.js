@@ -24,11 +24,19 @@ const {age} = secondPerson;
 const [a] = ["Hello", "hi"]
 
 function App() {  
+
+  // We can pass method references to the child component.
+  // In this way we can also communicate between two components
+
+  const parentMethod = (name) => {
+    console.log("Parent clicked", name)
+  }
+
   return (
     <div className="App">
       <header className="App-header">
           <MyComponent name="John"><div>This is a child prop</div></MyComponent>
-          <MyFuncComponent></MyFuncComponent>
+          <MyFuncComponent click={parentMethod}></MyFuncComponent>
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
