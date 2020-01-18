@@ -2,6 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import MyComponent from "./MyComponent/MyComponent";
+import MyFuncComponent from './MyFuncComponent/MyFunctionComponent';
 
 // Spread operator
 // Same can be used with arrays
@@ -27,6 +28,7 @@ function App() {
     <div className="App">
       <header className="App-header">
           <MyComponent name="John"><div>This is a child prop</div></MyComponent>
+          <MyFuncComponent></MyFuncComponent>
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
