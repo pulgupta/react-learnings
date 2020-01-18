@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+// Notice that no where we are using this keywork here in case of functional component
 const MyFuncComponent = props => {
   // Array destructuring is based on index and not by property name, so we can give any name
   const [compState, setState] = useState({
