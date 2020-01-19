@@ -8,11 +8,17 @@ const MyFuncComponent = props => {
     isPutProof: "tested"
   });
 
+  const [name, setName] = useState('');
+
   const myEventHandler = () => {
     setState({
       isClicked: !compState.isClicked
     });
   };
+
+  const myInputHandler = (event) => {
+    setName(event.target.value);
+  }
 
   return (
     <>
@@ -28,6 +34,9 @@ const MyFuncComponent = props => {
       <button onClick={() => props.click("Tom")}>
         Execute parent method(func)
       </button>
+
+      <input name="name" onChange={myInputHandler}></input>
+      <p>{name}</p>
     </>
   );
 };
