@@ -8,7 +8,7 @@ const MyFuncComponent = props => {
     isPutProof: "tested"
   });
 
-  const [name, setName] = useState('');
+  const [name, setName] = useState('Initial State');
 
   const myEventHandler = () => {
     setState({
@@ -35,7 +35,7 @@ const MyFuncComponent = props => {
         Execute parent method(func)
       </button>
 
-      <input name="name" onChange={myInputHandler}></input>
+      <input name="name" onChange={myInputHandler} value={name}></input>
       <p>{name}</p>
     </>
   );
