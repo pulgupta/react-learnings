@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Aux from "../../hoc/Aux";
+import PropTypes from "prop-types";
 
 // This is an example of a class based components.
 // We should avoid using them and should instead use functional components
@@ -54,6 +55,11 @@ class MyComponent extends Component {
       </Aux>
     );
   }
+}
+
+// This will just generate a warning but will not fail the build or run of the application
+MyComponent.propTypes = {
+  name: PropTypes.string,
 }
 
 export default MyComponent;
