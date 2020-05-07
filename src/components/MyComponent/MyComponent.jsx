@@ -51,4 +51,7 @@ class MyComponent extends Component {
   }
 }
 
-export default MyComponent;
+// Memo will make sure that this component will only be loaded if the props are not changed.
+// This will help in cases where the parent is re-rendering but since props are not changed
+// we can save on unnecessary re-rendering of the child components.
+export default React.memo(MyComponent);
