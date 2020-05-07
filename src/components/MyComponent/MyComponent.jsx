@@ -6,6 +6,11 @@ import React, { Component } from "react";
 
 class MyComponent extends Component {
 
+  constructor(props) {
+    super(props) // Mandatory is we are using an explicit constructor
+    console.log("This is called as the first life cycle method")
+  }
+
   // STATE MANAGEMENT: The way to define component state in class based components
   state = {
     isClicked: false,
