@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
 
 // Notice that no where we are using this keywork here in case of functional component
 const MyFuncComponent = props => {
@@ -9,6 +10,10 @@ const MyFuncComponent = props => {
   const [compState, setState] = useState({
     isClicked: false,
     isPutProof: "tested"
+  });
+
+  useEffect(() => {
+    console.log("useEffect executed")
   });
 
   const [name, setName] = useState('Initial State');

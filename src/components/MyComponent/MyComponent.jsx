@@ -11,6 +11,10 @@ class MyComponent extends Component {
     console.log("This is called as the first life cycle method")
   }
 
+  componentDidMount() {
+    console.log("componentDidMount executed")
+  }
+
   // STATE MANAGEMENT: The way to define component state in class based components
   state = {
     isClicked: false,
