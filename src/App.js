@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import MyComponent from "./MyComponent/MyComponent";
 import MyFuncComponent from './MyFuncComponent/MyFunctionComponent';
+import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
 
 // Spread operator
 // Same can be used with arrays
@@ -34,6 +35,7 @@ function App() {
 
   return (
     <div className="App">
+      <ErrorBoundary>
       <header className="App-header">
           <MyComponent name="John"><div>This is a child prop</div></MyComponent>
     
@@ -54,6 +56,7 @@ function App() {
       </header>
       <p>Spread Operator: {secondPerson.name}</p>
       <p>Object Destructuring: {age}, {a}</p>
+      </ErrorBoundary>
     </div>
   );
 }

@@ -21,6 +21,7 @@ const MyFuncComponent = props => {
 
   // Way of expecting event object
   const myInputHandler = (event) => {
+    // Two way binding step 1
     setName(event.target.value);
   }
 
@@ -40,6 +41,9 @@ const MyFuncComponent = props => {
       </button>
 
       <input name="name" onChange={myInputHandler} value={name}></input>
+      {
+        // Two way binding step 2
+      }
       <p>{name}</p>
     </>
   );
