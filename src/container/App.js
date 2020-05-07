@@ -1,9 +1,9 @@
 import React from 'react';
-import logo from './logo.svg';
+import logo from '../assets/logo.svg';
 import './App.css';
-import MyComponent from "./MyComponent/MyComponent";
-import MyFuncComponent from './MyFuncComponent/MyFunctionComponent';
-import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
+import MyComponent from "../components/MyComponent/MyComponent";
+import MyFuncComponent from '../components/MyFuncComponent/MyFunctionComponent';
+import ErrorBoundary from '../components/ErrorBoundary/ErrorBoundary';
 
 // Spread operator
 // Same can be used with arrays
@@ -38,21 +38,9 @@ function App() {
       <ErrorBoundary>
       <header className="App-header">
           <MyComponent name="John"><div>This is a child prop</div></MyComponent>
-    
           <MyFuncComponent click={parentMethod}></MyFuncComponent>
     
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React - Scroll Down
-        </a>
       </header>
       <p>Spread Operator: {secondPerson.name}</p>
       <p>Object Destructuring: {age}, {a}</p>
