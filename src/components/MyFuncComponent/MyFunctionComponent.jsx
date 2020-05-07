@@ -12,10 +12,27 @@ const MyFuncComponent = props => {
     isPutProof: "tested"
   });
 
-  useEffect(() => {
-    console.log("useEffect executed")
-  }, [props]); // The second parameter passed to useEffect tells us which properties should change for useEffect to trigger again
+  // The second parameter passed to useEffect tells us which properties should change for useEffect to trigger again
   // Also we can have any number of use effect in our single component.
+  useEffect(() => {
+    console.log("useEffect executed for first load")
+    return () => {
+      console.log("clean up method for unload")
+    }
+  }, []); 
+
+  // use effect will be executed only for props change
+  useEffect(() => {
+    console.log("useEffect executed only for props change and component load")
+  }, [props]); 
+
+  // Use effect will be executed for each update as we are not passing the second parameter
+  useEffect(() => {
+    console.log("useEffect executed for each update(re-render)")
+    return () => {
+      console.log("clean up method for each render")
+    }
+  }); 
 
   const [name, setName] = useState('Initial State');
   // we can take event parameter here as well
