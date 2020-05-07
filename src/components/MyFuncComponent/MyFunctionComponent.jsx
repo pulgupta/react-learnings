@@ -14,7 +14,8 @@ const MyFuncComponent = props => {
 
   useEffect(() => {
     console.log("useEffect executed")
-  });
+  }, [props]); // The second parameter passed to useEffect tells us which properties should change for useEffect to trigger again
+  // Also we can have any number of use effect in our single component.
 
   const [name, setName] = useState('Initial State');
   // we can take event parameter here as well
