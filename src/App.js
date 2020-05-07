@@ -36,7 +36,9 @@ function App() {
     <div className="App">
       <header className="App-header">
           <MyComponent name="John"><div>This is a child prop</div></MyComponent>
+    
           <MyFuncComponent click={parentMethod}></MyFuncComponent>
+    
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
