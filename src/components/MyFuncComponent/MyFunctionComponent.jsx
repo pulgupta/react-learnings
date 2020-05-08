@@ -1,44 +1,48 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
+import { useRef } from "react";
 
 // Notice that no where we are using this keywork here in case of functional component
-const MyFuncComponent = props => {
-
+const MyFuncComponent = (props) => {
   // Array destructuring is based on index and not by property name, so we can give any name
-  // Use state return an array and so the first index of the returned array goes into compState and the second index 
+  // Use state return an array and so the first index of the returned array goes into compState and the second index
   // - which is actually a method goes into setState
   const [compState, setState] = useState({
     isClicked: false,
-    isPutProof: "tested"
+    isPutProof: "tested",
   });
+
+  const inputRef = useRef();
 
   // The second parameter passed to useEffect tells us which properties should change for useEffect to trigger again
   // Also we can have any number of use effect in our single component.
   useEffect(() => {
-    console.log("useEffect executed for first load")
+    console.log("useEffect executed for first load");
+    inputRef.current.focus();
+
     return () => {
-      console.log("clean up method for unload")
-    }
-  }, []); 
+      console.log("clean up method for unload");
+    };
+  }, []);
 
   // use effect will be executed only for props change
   useEffect(() => {
-    console.log("useEffect executed only for props change and component load")
-  }, [props]); 
+    console.log("useEffect executed only for props change and component load");
+  }, [props]);
 
   // Use effect will be executed for each update as we are not passing the second parameter
   useEffect(() => {
-    console.log("useEffect executed for each update(re-render)")
+    console.log("useEffect executed for each update(re-render)");
     return () => {
-      console.log("clean up method for each render")
-    }
-  }); 
+      console.log("clean up method for each render");
+    };
+  });
 
-  const [name, setName] = useState('Initial State');
+  const [name, setName] = useState("Initial State");
   // we can take event parameter here as well
   const myEventHandler = () => {
     setState({
-      isClicked: !compState.isClicked
+      isClicked: !compState.isClicked,
     });
   };
 
@@ -46,7 +50,7 @@ const MyFuncComponent = props => {
   const myInputHandler = (event) => {
     // Two way binding step 1
     setName(event.target.value);
-  }
+  };
 
   return (
     <>
@@ -62,8 +66,12 @@ const MyFuncComponent = props => {
       <button onClick={() => props.click("Tom")}>
         Execute parent method(func)
       </button>
-
-      <input name="name" onChange={myInputHandler} value={name}></input>
+      <input
+        name="name"
+        onChange={myInputHandler}
+        value={name}
+        ref={inputRef}
+      ></input>
       {
         // Two way binding step 2
       }

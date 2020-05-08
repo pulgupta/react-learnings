@@ -17,7 +17,7 @@ class MyComponent extends Component {
   componentDidMount() {
     console.log("componentDidMount executed after the render method");
     // Since componentDidMount is executed after render() we can now focus on the rendered button.
-    this.buttonRef.current.focus();
+    this.buttonRef.current.click();
   }
 
   // STATE MANAGEMENT: The way to define component state in class based components
