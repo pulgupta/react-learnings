@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import Aux from "../../hoc/Aux";
 import PropTypes from "prop-types";
+import axios from "axios";
 
 // This is an example of a class based components.
 // We should avoid using them and should instead use functional components
 // INHERITANCE: extends is used for inheritance
 
 class MyComponent extends Component {
+  
   constructor(props) {
     super(props); // Mandatory is we are using an explicit constructor
     console.log("This is called as the first life cycle method");
@@ -14,8 +16,14 @@ class MyComponent extends Component {
     this.buttonRef = React.createRef();
   }
 
+  data ={};
+
   componentDidMount() {
     console.log("componentDidMount executed after the render method");
+    axios.get("https://jsonplaceholder.typicode.com/todos/1").then((response) => {
+      console.log(response);
+      this.data = response;  
+    });
     // Since componentDidMount is executed after render() we can now focus on the rendered button.
     this.buttonRef.current.click();
   }
@@ -35,6 +43,7 @@ class MyComponent extends Component {
     this.setState({
       isClicked: !this.state.isClicked,
     });
+    console.log("In button click API data was ", this.data.data)
   };
 
   // Renders method should always return a valid JSX
@@ -50,7 +59,9 @@ class MyComponent extends Component {
           {
             // way of linling a call without actually calling it
           }
-          <button onClick={this.myEventHandler} ref={this.buttonRef}>Press Button</button>
+          <button onClick={this.myEventHandler} ref={this.buttonRef}>
+            Press Button
+          </button>
           {this.state.isClicked && (
             // This shows that even after we set the partial state the remaining stuff is preserved and is not removed.
             <p>Button is pressed {this.state.isPatchProof}</p>
