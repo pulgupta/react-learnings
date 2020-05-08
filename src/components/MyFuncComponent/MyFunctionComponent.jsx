@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useRef } from "react";
+import AppLabels from "../../context/AppLabels";
+import Aux from "../../hoc/Aux";
 
 // Notice that no where we are using this keywork here in case of functional component
 const MyFuncComponent = (props) => {
@@ -53,8 +55,14 @@ const MyFuncComponent = (props) => {
   };
 
   return (
-    <>
-      <button onClick={myEventHandler}>Press Button(func)</button>{" "}
+    <Aux>
+      <AppLabels.Consumer>
+        {(context) => (
+          <button onClick={myEventHandler}>
+            Press Button(func) {context.Name}{" "}
+          </button>
+        )}
+      </AppLabels.Consumer>
       {compState.isClicked && (
         // Will not see the value of isPutProof as in case of functional components it is not a patch but a put.
         <div>Hello from functional component {compState.isPutProof}</div>
@@ -76,7 +84,7 @@ const MyFuncComponent = (props) => {
         // Two way binding step 2
       }
       <p>{name}</p>
-    </>
+    </Aux>
   );
 };
 
