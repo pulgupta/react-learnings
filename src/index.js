@@ -30,7 +30,8 @@ axios.interceptors.response.use(response => {
 /**
  * In both the cases above we have eject method. We can take the reference of the interceptor in a 
  * variable and then use that reference to remove the interceptor by calling eject on that reference
- * We can also use `axios.default.baseURL to set the parent url for our server`
+ * We can also use `axios.defaults.baseURL to set the parent url for our server`
+ * We can even set headers by using this defaults object
  */
 
 
