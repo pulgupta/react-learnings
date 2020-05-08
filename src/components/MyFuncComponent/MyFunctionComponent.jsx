@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useEffect } from "react";
 import { useRef } from "react";
 import AppLabels from "../../context/AppLabels";
@@ -15,17 +15,18 @@ const MyFuncComponent = (props) => {
   });
 
   const inputRef = useRef();
-
+  const context = useContext(AppLabels);
   // The second parameter passed to useEffect tells us which properties should change for useEffect to trigger again
   // Also we can have any number of use effect in our single component.
   useEffect(() => {
     console.log("useEffect executed for first load");
     inputRef.current.focus();
+    console.log("Context value is " + context.name)
 
     return () => {
       console.log("clean up method for unload");
     };
-  }, []);
+  }, [context.name]);
 
   // use effect will be executed only for props change
   useEffect(() => {
@@ -59,7 +60,7 @@ const MyFuncComponent = (props) => {
       <AppLabels.Consumer>
         {(context) => (
           <button onClick={myEventHandler}>
-            Press Button(func) {context.Name}{" "}
+            Press Button(func) {context.name}{" "}
           </button>
         )}
       </AppLabels.Consumer>

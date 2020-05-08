@@ -5,6 +5,7 @@ import MyComponent from "../components/MyComponent/MyComponent";
 import MyFuncComponent from "../components/MyFuncComponent/MyFunctionComponent";
 import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary";
 import AppLabels from "../context/AppLabels";
+import LabelWrapper from "../context/Labels";
 
 // Spread operator
 // Same can be used with arrays
@@ -38,10 +39,11 @@ function App() {
       <ErrorBoundary>
         <AppLabels.Provider
           value={{
-            Name: "React",
+            name: "React",
           }}
         >
           <header className="App-header">
+            <LabelWrapper></LabelWrapper>
             <MyComponent name="John">
               <div>This is a child prop</div>
             </MyComponent>
