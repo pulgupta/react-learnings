@@ -100,7 +100,7 @@ const MyFuncComponent = (props) => {
         onClick={() =>
           handlePostData({
             name: "Tom",
-            age: 10
+            age: 10,
           })
         }
       >

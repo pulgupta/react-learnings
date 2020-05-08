@@ -8,7 +8,6 @@ import axios from "axios";
 // INHERITANCE: extends is used for inheritance
 
 class MyComponent extends Component {
-  
   constructor(props) {
     super(props); // Mandatory is we are using an explicit constructor
     console.log("This is called as the first life cycle method");
@@ -16,14 +15,16 @@ class MyComponent extends Component {
     this.buttonRef = React.createRef();
   }
 
-  data ={};
+  data = {};
 
   componentDidMount() {
     console.log("componentDidMount executed after the render method");
-    axios.get("https://jsonplaceholder.typicode.com/todos/1").then((response) => {
-      console.log(response);
-      this.data = response;  
-    });
+    axios
+      .get("https://jsonplaceholder.typicode.com/todos/1")
+      .then((response) => {
+        console.log(response);
+        this.data = response;
+      });
     // Since componentDidMount is executed after render() we can now focus on the rendered button.
     this.buttonRef.current.click();
   }
@@ -43,7 +44,7 @@ class MyComponent extends Component {
     this.setState({
       isClicked: !this.state.isClicked,
     });
-    console.log("In button click API data was ", this.data.data)
+    console.log("In button click API data was ", this.data.data);
   };
 
   // Renders method should always return a valid JSX
