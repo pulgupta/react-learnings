@@ -4,6 +4,7 @@ import { useRef } from "react";
 import AppLabels from "../../context/AppLabels";
 import Aux from "../../hoc/Aux";
 import { Button } from "./MyFunctionComponen.styles";
+import axios from "axios";
 
 // Notice that no where we are using this keywork here in case of functional component
 const MyFuncComponent = (props) => {
@@ -56,6 +57,14 @@ const MyFuncComponent = (props) => {
     setName(event.target.value);
   };
 
+  const handlePostData = (data) => {
+    axios
+      .post("https://jsonplaceholder.typicode.com/posts", data)
+      .then((response) => {
+        console.log(response);
+      });
+  };
+
   return (
     <Aux>
       <AppLabels.Consumer>
@@ -86,6 +95,17 @@ const MyFuncComponent = (props) => {
         // Two way binding step 2
       }
       <p>{name}</p>
+
+      <Button
+        onClick={() =>
+          handlePostData({
+            name: "Tom",
+            age: 10
+          })
+        }
+      >
+        Post data to server
+      </Button>
     </Aux>
   );
 };
