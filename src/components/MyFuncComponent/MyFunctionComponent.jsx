@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useRef } from "react";
 import AppLabels from "../../context/AppLabels";
 import Aux from "../../hoc/Aux";
+import { Button } from "./MyFunctionComponen.styles";
 
 // Notice that no where we are using this keywork here in case of functional component
 const MyFuncComponent = (props) => {
@@ -21,7 +22,7 @@ const MyFuncComponent = (props) => {
   useEffect(() => {
     console.log("useEffect executed for first load");
     inputRef.current.focus();
-    console.log("Context value is " + context.name)
+    console.log("Context value is " + context.name);
 
     return () => {
       console.log("clean up method for unload");
@@ -72,9 +73,9 @@ const MyFuncComponent = (props) => {
         //This is the way of passing parameters to your methods. In this case as well we are not calling the method.
         // We are creating an annonamous method and passing the reference to that annonamous methood
       }
-      <button onClick={() => props.click("Tom")}>
+      <Button onClick={() => props.click("Tom")}>
         Execute parent method(func)
-      </button>
+      </Button>
       <input
         name="name"
         onChange={myInputHandler}
