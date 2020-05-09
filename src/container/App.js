@@ -1,15 +1,14 @@
 import React from "react";
-import logo from "../assets/logo.svg";
 import "./App.css";
 import MyComponent from "../components/MyComponent/MyComponent";
 import MyFuncComponent from "../components/MyFuncComponent/MyFunctionComponent";
 import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary";
 import AppLabels from "../context/AppLabels";
 import LabelWrapper from "../context/Labels";
+import { Route, Link } from "react-router-dom";
 
 // Spread operator
 // Same can be used with arrays
-
 const person = {
   name: "Tom",
 };
@@ -26,7 +25,7 @@ const { age } = secondPerson;
 // In case of array destructuring we would have used [] brackets
 const [a] = ["Hello", "hi"];
 
-function App() {
+const App = (props) => {
   // We can pass method references to the child component.
   // In this way we can also communicate between two components
 
@@ -42,23 +41,42 @@ function App() {
             name: "React",
           }}
         >
+          <nav>
+            <ul>
+              <li>
+                <Link to="/class-component">Class based components</Link>
+              </li>
+              <li>
+                <Link to="/functional-component">Functional components</Link>
+              </li>
+            </ul>
+          </nav>
           <header className="App-header">
             <LabelWrapper></LabelWrapper>
-            <MyComponent name="John">
-              <div>This is a child prop</div>
-            </MyComponent>
-            <MyFuncComponent click={parentMethod}></MyFuncComponent>
-
-            <img src={logo} className="App-logo" alt="logo" />
+            <p>Spread Operator: {secondPerson.name}</p>
+            <p>
+              Object Destructuring: {age}, {a}
+            </p>
+            <Route
+              path="/class-component"
+              render={() => (
+                <MyComponent name="John">
+                  <div>This is a child prop</div>
+                </MyComponent>
+              )}
+            />
+            <Route
+              path="/functional-component"
+              exact
+              render={() => (
+                <MyFuncComponent click={parentMethod}></MyFuncComponent>
+              )}
+            />
           </header>
-          <p>Spread Operator: {secondPerson.name}</p>
-          <p>
-            Object Destructuring: {age}, {a}
-          </p>
         </AppLabels.Provider>
       </ErrorBoundary>
     </div>
   );
-}
+};
 
 export default App;

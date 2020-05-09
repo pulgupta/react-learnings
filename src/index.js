@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./container/App";
 import axios from "axios";
+import { BrowserRouter, Route } from "react-router-dom";
 
 /**
  * This interceptor will work on request and will handle both success and error cases.
@@ -38,4 +39,9 @@ axios.interceptors.response.use(
  * We can even set headers by using this defaults object
  */
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(
+  <BrowserRouter>
+      <Route path="/" component={App} />
+  </BrowserRouter>,
+  document.getElementById("root")
+);
