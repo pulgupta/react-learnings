@@ -5,6 +5,7 @@ import AppLabels from "../../context/AppLabels";
 import Aux from "../../hoc/Aux";
 import { Button } from "./MyFunctionComponen.styles";
 import axios from "axios";
+import { withRouter } from "react-router";
 
 // Notice that no where we are using this keywork here in case of functional component
 const MyFuncComponent = (props) => {
@@ -74,11 +75,13 @@ const MyFuncComponent = (props) => {
           </button>
         )}
       </AppLabels.Consumer>
-      {compState.isClicked && (
+      {
+      compState.isClicked && (
         // Will not see the value of isPutProof as in case of functional components it is not a patch but a put.
         <div>Hello from functional component {compState.isPutProof}</div>
       )}
       {
+        console.log('props are ', props)
         //This is the way of passing parameters to your methods. In this case as well we are not calling the method.
         // We are creating an annonamous method and passing the reference to that annonamous methood
       }
@@ -113,4 +116,9 @@ const MyFuncComponent = (props) => {
 // Memo will make sure that this component will only be loaded if the props are not changed.
 // This will help in cases where the parent is re-rendering but since props are not changed
 // we can save on unnecessary re-rendering of the child components.
-export default React.memo(MyFuncComponent);
+
+// The other things which we are using here is the withRouter HOC.
+// This HOC makes sure that we are able to access the router related props down the component 
+// chain. In this case we have attached an inline component with our router still just by adding
+// withRouter I am able to access the router releated props like history etc
+export default withRouter(React.memo(MyFuncComponent));
