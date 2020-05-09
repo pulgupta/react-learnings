@@ -13,7 +13,7 @@ const person = {
   name: "Tom",
 };
 
-// Even though objects are reference types in JS. Spread operator helps us in creating 
+// Even though objects are reference types in JS. Spread operator helps us in creating
 // copies of data rather just referencing to the same data.
 const secondPerson = {
   ...person,

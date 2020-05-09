@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import Aux from "../../hoc/Aux";
 import PropTypes from "prop-types";
 import axios from "axios";
+import { Route } from "react-router";
+import { Link } from "react-router-dom";
 
 // This is an example of a class based components.
 // We should avoid using them and should instead use functional components
@@ -51,6 +53,28 @@ class MyComponent extends Component {
   render() {
     return (
       <Aux>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/class-component/sub-route1">Sub-route 1</Link>
+            </li>
+            <li>
+              <Link to="/class-component/sub-route2">Sub-route 2</Link>
+            </li>
+          </ul>
+        </nav>
+        <Route
+          path="/class-component/sub-route1"
+          render={() => {
+            return <h2>Route 1</h2>;
+          }}
+        />
+        <Route
+          path="/class-component/sub-route2"
+          render={() => {
+            return <h2>Route 2</h2>;
+          }}
+        />
         <div>
           <p>
             Just to show two divs at same order inside our own React.Fragment
