@@ -40,7 +40,7 @@ axios.interceptors.response.use(
  * We can also use `axios.defaults.baseURL to set the parent url for our server`
  * We can even set headers by using this defaults object
  */
-const store = createStore(reducer);
+const store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 ReactDOM.render(
   <Provider store={store}>
