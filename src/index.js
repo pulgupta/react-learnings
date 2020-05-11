@@ -40,7 +40,7 @@ axios.interceptors.response.use(
  */
 
 ReactDOM.render(
-  <BrowserRouter>
+  <BrowserRouter basename="/myContextPath">
       <Route path="/" component={App} />
   </BrowserRouter>,
   document.getElementById("root")

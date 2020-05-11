@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Aux from "../../hoc/Aux";
 import PropTypes from "prop-types";
 import axios from "axios";
-import { Route, Switch, withRouter } from "react-router";
+import { Route, Switch, withRouter, Redirect } from "react-router";
 import { Link } from "react-router-dom";
 
 // This is an example of a class based components.
@@ -76,6 +76,13 @@ class MyComponent extends Component {
               return <h2>Route 2</h2>;
             }}
           />
+          {/**
+           * This will make sure that in case a user is specifying anything other than route-1 and route-2 
+           * then he will land on the second route so.
+           * This will help in cases where we want to make sure that user is shown something even if he is 
+           * entering some invalid route
+           */}
+          <Redirect from={`${this.props.match.url}/:any`} to={`${this.props.match.url}/sub-route2`} ></Redirect>
         </Switch>
 
         <div>
