@@ -58,10 +58,7 @@ const App = (props) => {
           </nav>
           <header className="App-header">
             <LabelWrapper></LabelWrapper>
-            <p>Spread Operator: {secondPerson.name}</p>
-            <p>
-              Object Destructuring: {age}, {a}
-            </p>
+            <p>{`Spread Operator: ${secondPerson.name}. Object Destructuring: ${age}, ${a}`}</p>
             <Route
               path="/class-component"
               render={() => (
