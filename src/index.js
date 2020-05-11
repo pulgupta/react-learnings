@@ -4,7 +4,9 @@ import "./index.css";
 import App from "./container/App";
 import axios from "axios";
 import { BrowserRouter, Route } from "react-router-dom";
-
+import { createStore } from "redux";
+import reducer from "./reducer/reducer";
+import { Provider } from "react-redux";
 /**
  * This interceptor will work on request and will handle both success and error cases.
  */
@@ -38,10 +40,13 @@ axios.interceptors.response.use(
  * We can also use `axios.defaults.baseURL to set the parent url for our server`
  * We can even set headers by using this defaults object
  */
+const store = createStore(reducer);
 
 ReactDOM.render(
-  <BrowserRouter basename="/myContextPath">
+  <Provider store={store}>
+    <BrowserRouter basename="/myContextPath">
       <Route path="/" component={App} />
-  </BrowserRouter>,
+    </BrowserRouter>
+  </Provider>,
   document.getElementById("root")
 );

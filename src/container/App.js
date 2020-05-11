@@ -6,6 +6,7 @@ import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary";
 import AppLabels from "../context/AppLabels";
 import LabelWrapper from "../context/Labels";
 import { Route, Link } from "react-router-dom";
+import ReduxAttachedComponent from "../components/reduxBasedComponent/ReduxAttachedComponent";
 
 // Spread operator
 // Same can be used with arrays
@@ -50,6 +51,9 @@ const App = (props) => {
               <li>
                 <Link to="/functional-component">Functional components</Link>
               </li>
+              <li>
+                <Link to="/redux-component">Redux based components</Link>
+              </li>
             </ul>
           </nav>
           <header className="App-header">
@@ -72,6 +76,10 @@ const App = (props) => {
               render={() => (
                 <MyFuncComponent click={parentMethod}></MyFuncComponent>
               )}
+            />
+            <Route
+              path="/redux-component"
+              render={() => <ReduxAttachedComponent />}
             />
           </header>
         </AppLabels.Provider>

@@ -36,7 +36,7 @@ const reducer = (state = initialState, action) => {
         counter: state.counter + 1,
       };
     default:
-      break;
+      return state;
   }
 };
 
