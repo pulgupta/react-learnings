@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Aux from "../../hoc/Aux";
 import PropTypes from "prop-types";
 import axios from "axios";
-import { Route } from "react-router";
+import { Route, Switch, withRouter } from "react-router";
 import { Link } from "react-router-dom";
 
 // This is an example of a class based components.
@@ -59,22 +59,25 @@ class MyComponent extends Component {
               <Link to="/class-component/sub-route1">Sub-route 1</Link>
             </li>
             <li>
-              <Link to="/class-component/sub-route2">Sub-route 2</Link>
+              <Link to={`${this.props.match.url}/sub-route2`}>Sub-route 2</Link>
             </li>
           </ul>
         </nav>
-        <Route
-          path="/class-component/sub-route1"
-          render={() => {
-            return <h2>Route 1</h2>;
-          }}
-        />
-        <Route
-          path="/class-component/sub-route2"
-          render={() => {
-            return <h2>Route 2</h2>;
-          }}
-        />
+        <Switch>
+          <Route
+            path="/class-component/sub-route1"
+            render={() => {
+              return <h2>Route 1</h2>;
+            }}
+          />
+          <Route
+            path={`${this.props.match.url}/sub-route2`}
+            render={() => {
+              return <h2>Route 2</h2>;
+            }}
+          />
+        </Switch>
+
         <div>
           <p>
             Just to show two divs at same order inside our own React.Fragment
@@ -93,6 +96,7 @@ class MyComponent extends Component {
           )}
           <p>Hello : {this.props.name}</p>
           {this.props.children}
+          {console.log('Props are', this.props)}
         </div>
       </Aux>
     );
@@ -104,4 +108,4 @@ MyComponent.propTypes = {
   name: PropTypes.string,
 };
 
-export default MyComponent;
+export default withRouter(MyComponent);
