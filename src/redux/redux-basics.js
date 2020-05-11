@@ -1,12 +1,12 @@
 /**
- * We are doing this demo just by using node so we will use node way of working
- * Hence we are using require insted of import
+ * We are doing this demo just by using node so we will use node way of importing
+ * dependencies. Hence we are using require insted of import
  */
 const redux = require("redux");
 const createStore = redux.createStore;
 
 /**
- * Intial state of our store
+ * Intial state of our redux store
  */
 const initialState = {
   counter: 0,
@@ -14,13 +14,17 @@ const initialState = {
 
 /**
  *
- * @param {Current state} state -> if state is not passed that initial state will be used.
- * @param {*} action
+ * @param {Current state. if state is not passed that initial state will be used.} state.
+ * @param {contains the action type and an optional payload} action
  */
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-      // We can't directly change the state object hence we are creating a new 
-      // object using teh spread operator and returning the newly created object
+      /**
+       * We can't directly change the state object hence we are creating a new 
+       * object using the spread operator and returning the newly created object.
+       * In this way we are not modifying what is currently present in the state
+       * but are just returning new object
+       */
     case "ADD_COUNTER":
       return {
         ...state,
@@ -45,7 +49,7 @@ const store = createStore(reducer);
  * Subscription
  */
 store.subscribe(() => {
-    console.log(store.getState());
+    console.log('Current data in store ', store.getState());
 })
 
 /**
