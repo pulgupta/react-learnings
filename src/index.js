@@ -43,7 +43,7 @@ const loggerMiddleware = store => {
   return next => {
     return action => {
       console.log('[Middleware] dispactching ', action);
-      const result = next(action);
+      const result = next(action); // Fires the subsequent step and so updates the state
       console.log('[Middleware] next state ', store.getState());
       return result;
     }
