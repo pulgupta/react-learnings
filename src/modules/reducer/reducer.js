@@ -1,5 +1,6 @@
 const initialState = {
-    counter: 0
+    counter: 0,
+    history: []
 }
 
 const reducer = (state = initialState, action) => {
@@ -11,14 +12,18 @@ const reducer = (state = initialState, action) => {
          * but are just returning new object
          */
       case "ADD_COUNTER":
+        const ctr = state.counter + action.payload.value;
         return {
           ...state,
-          counter: state.counter + action.payload.value,
+          counter: ctr,
+          history: state.history.concat(ctr)
         };
       case "INC_COUNTER":
+        const ctr1 = state.counter + 1;
         return {
           ...state,
-          counter: state.counter + 1,
+          counter: ctr1,
+          history: state.history.concat(ctr1)
         };
       default:
         return state;

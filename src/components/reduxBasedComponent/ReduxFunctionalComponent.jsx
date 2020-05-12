@@ -4,6 +4,7 @@ import addAction from "../../modules/action/addAction";
 
 const ReduxFunctionalComponent = (props) => {
   const ctr = useSelector((state) => state.counter);
+  const hist = useSelector((state) => state.history);
   const dispatch = useDispatch();
   const [inc, setInc] = useState(10);
   const valueEventHandler = (event) => {
@@ -19,6 +20,15 @@ const ReduxFunctionalComponent = (props) => {
       <button onClick={() => dispatch(addAction(parseInt(inc)))}>
         Add value to Counter
       </button>
+      <div>
+        {hist.map((value) => {
+          return (
+            <ul>
+              <li>{value}</li>
+            </ul>
+          )
+        })}
+      </div>
     </div>
   );
 };
