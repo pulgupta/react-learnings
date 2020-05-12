@@ -21,6 +21,7 @@ const ReduxFunctionalComponent = (props) => {
         Add value to Counter
       </button>
       <div>
+        <p>History of the updates</p>
         {hist.map((value) => {
           return (
             <ul>
