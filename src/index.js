@@ -4,7 +4,7 @@ import "./index.css";
 import App from "./container/App";
 import axios from "axios";
 import { BrowserRouter, Route } from "react-router-dom";
-import { createStore } from "redux";
+import { createStore, applyMiddleware, compose } from "redux";
 import reducer from "./modules/reducer/reducer";
 import { Provider } from "react-redux";
 /**
@@ -34,13 +34,28 @@ axios.interceptors.response.use(
     return Promise.reject(error);
   }
 );
+
+/**
+ * Setting up the redux middleware
+ * @param {Redux store} store 
+ */
+const loggerMiddleware = store => {
+  return next => {
+    return action => {
+      console.log('[Middleware] dispactching ', action);
+      const result = next(action);
+      console.log('[Middleware] next state ', store.getState());
+      return result;
+    }
+  }
+}
 /**
  * In both the cases above we have eject method. We can take the reference of the interceptor in a
  * variable and then use that reference to remove the interceptor by calling eject on that reference
  * We can also use `axios.defaults.baseURL to set the parent url for our server`
  * We can even set headers by using this defaults object
  */
-const store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+const store = createStore(reducer, compose( applyMiddleware(loggerMiddleware), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()));
 
 ReactDOM.render(
   <Provider store={store}>

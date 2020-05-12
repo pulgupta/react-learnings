@@ -22,13 +22,11 @@ const ReduxFunctionalComponent = (props) => {
       </button>
       <div>
         <p>History of the updates</p>
-        {hist.map((value) => {
-          return (
-            <ul>
-              <li>{value}</li>
-            </ul>
-          )
-        })}
+        <ul>
+          {hist.map((value, index) => {
+            return <li key={index}>{value}</li>;
+          })}
+        </ul>
       </div>
     </div>
   );
