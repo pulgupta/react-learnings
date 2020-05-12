@@ -7,6 +7,7 @@ import AppLabels from "../context/AppLabels";
 import LabelWrapper from "../context/Labels";
 import { Route, Link } from "react-router-dom";
 import ReduxAttachedComponent from "../components/reduxBasedComponent/ReduxAttachedComponent";
+import ReduxFunctionalComponent from "../components/reduxBasedComponent/ReduxFunctionalComponent";
 
 // Spread operator
 // Same can be used with arrays
@@ -76,7 +77,7 @@ const App = (props) => {
             />
             <Route
               path="/redux-component"
-              render={() => <ReduxAttachedComponent />}
+              render={() => <><ReduxAttachedComponent /><ReduxFunctionalComponent/></>}
             />
           </header>
         </AppLabels.Provider>

@@ -1,10 +1,17 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Component } from "react";
 
-const ReduxAttachedComponent = (props) => {
-  return <div><p>Counter value is {props.crt}</p>
-  <button onClick={props.increment}>Increment Counter</button></div>;
-};
+class ReduxAttachedComponent extends Component {
+  render() {
+    return (
+      <div>
+        <p>Counter value is {this.props.crt}</p>
+        <button onClick={this.props.increment}>Increment Counter</button>
+      </div>
+    );
+  }
+}
 
 const mapsStateToProps = (state) => {
   return {
@@ -12,12 +19,16 @@ const mapsStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = dispatch => {
-    return {
-        increment : () => dispatch({
-            type: 'INC_COUNTER'
-        })
-    }
-}
+const mapDispatchToProps = (dispatch) => {
+  return {
+    increment: () =>
+      dispatch({
+        type: "INC_COUNTER",
+      }),
+  };
+};
 
-export default connect(mapsStateToProps, mapDispatchToProps)(ReduxAttachedComponent);
+export default connect(
+  mapsStateToProps,
+  mapDispatchToProps
+)(ReduxAttachedComponent);

@@ -5,7 +5,7 @@ import App from "./container/App";
 import axios from "axios";
 import { BrowserRouter, Route } from "react-router-dom";
 import { createStore } from "redux";
-import reducer from "./reducer/reducer";
+import reducer from "./modules/reducer/reducer";
 import { Provider } from "react-redux";
 /**
  * This interceptor will work on request and will handle both success and error cases.
