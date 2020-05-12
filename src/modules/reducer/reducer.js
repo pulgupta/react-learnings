@@ -1,3 +1,5 @@
+import { types } from "../action/addAction";
+
 const initialState = {
     counter: 0,
     history: []
@@ -11,14 +13,14 @@ const reducer = (state = initialState, action) => {
          * In this way we are not modifying what is currently present in the state
          * but are just returning new object
          */
-      case "ADD_COUNTER":
+      case types.ADD_COUNTER:
         const ctr = state.counter + action.payload.value;
         return {
           ...state,
           counter: ctr,
           history: state.history.concat(ctr)
         };
-      case "INC_COUNTER":
+      case types.INC_COUNTER:
         const ctr1 = state.counter + 1;
         return {
           ...state,
