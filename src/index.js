@@ -7,6 +7,8 @@ import { BrowserRouter, Route } from "react-router-dom";
 import { createStore, applyMiddleware, compose } from "redux";
 import reducer from "./modules/reducer/reducer";
 import { Provider } from "react-redux";
+import thunk from 'redux-thunk';
+
 /**
  * This interceptor will work on request and will handle both success and error cases.
  */
@@ -55,7 +57,7 @@ const loggerMiddleware = store => {
  * We can also use `axios.defaults.baseURL to set the parent url for our server`
  * We can even set headers by using this defaults object
  */
-const store = createStore(reducer, compose( applyMiddleware(loggerMiddleware), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()));
+const store = createStore(reducer, compose(applyMiddleware(loggerMiddleware, thunk), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()));
 
 ReactDOM.render(
   <Provider store={store}>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import addAction from "../../modules/action/addAction";
+import addCounterAsyncAction from "../../modules/action/addAction";
 
 const ReduxFunctionalComponent = (props) => {
   const ctr = useSelector((state) => state.counter);
@@ -17,7 +17,7 @@ const ReduxFunctionalComponent = (props) => {
       <div>
         <input name="inc_value" value={inc} onChange={valueEventHandler} />
       </div>
-      <button onClick={() => dispatch(addAction(parseInt(inc)))}>
+      <button onClick={() => dispatch(addCounterAsyncAction(parseInt(inc)))}>
         Add value to Counter
       </button>
       <div>
